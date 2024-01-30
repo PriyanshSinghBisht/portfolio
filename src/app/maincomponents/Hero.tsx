@@ -21,45 +21,38 @@ const Hero = () => {
        sm:items-center
        '
      >
-      <div className='sm:w-[500px] min-h-[250px] sm:pl-0'>
-         <motion.h1 className='text-4xl sm:mb-10 mb-5 '
-          initial={{ x: 200}}
-          whileInView={{x:0}}
-         >Hellow !</motion.h1>
-        
-        <motion.div 
-           initial={{ x: 200}}
-           whileInView={{x:0}}
-        >
-         <TypingEffect stringArray={stringArray} delay={100} /> 
-         </motion.div>
-      </div>
-      <div className='
-         w-[400px] 
-         sm:max-w-[50vw]
-         max-[500px]:w-[90%]
-         xl:mx-20
-         lg:mx-10
-         sm:mx-5
-         mx-auto
-         aspect-square
-         sm:mt-0
-         mt-10
-         '>
-        
-        <ImageContainer>
-             <div className='
-                w-full 
-                h-full 
-                rounded-full 
-                overflow-hidden'
-            
-                >
-               <img src="/images/mypic.png" alt="mypic" />
-
-             </div>
-        </ImageContainer>
-      </div>
+          <div className='sm:w-[500px] min-h-[250px] sm:pl-0'>
+              <motion.h1 className='sm:text-[30px] text-4xl font-bold mb-5 '
+                initial={{ x: 200}}
+                whileInView={{x:0}}
+              >Hellow !</motion.h1>
+              
+              <motion.div 
+                initial={{ x: 200}}
+                whileInView={{x:0}}
+              >
+              <TypingEffect stringArray={stringArray} delay={100} /> 
+              </motion.div>
+          </div>
+          <div className='
+            w-[500px]
+            max-[500px]:w-[90%]
+            xl:mx-20
+            lg:mx-10
+            sm:mx-5
+            mx-auto
+            aspect-square
+            sm:mt-0
+            mt-10
+            relative
+            '>
+              <img src="/images/group2.png" alt="mypic" 
+                  className="w-[600px] h-auto brightness-125 absolute top-0 -left-16"/>
+              <img src="/images/group.png" alt="mypic" 
+                  className="w-[600px] h-auto brightness-125 absolute top-0 -left-8"/>
+              <img src="/images/mypic2.png" alt="mypic" 
+                  className="w-[600px] h-auto brightness-125 absolute"/>
+          </div>
       </div>
   )
 }

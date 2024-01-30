@@ -60,14 +60,14 @@ const Projects = () => {
         <div className='sm:p-10 p-5 bg-gradient-green lg:w-[50%] w-full flex justify-center flex-col'>
              <h1 className='text-yellow-500 text-xl sm:text-3xl'>Netflix-clone</h1>
              <Link 
-              href="https://priyanshsinghbisht.github.io/netflix-clone/"
+              href="https://netflix-clone-priyansh.netlify.app/"
               target='block'
               className='text-blue-500 underline break-words 
               group hover:text-black dark:hover:text-white
               sm:py-3 
               '
               >
-                  https://priyanshsinghbisht.github.io/netflix-clone/ 
+                  https://netflix-clone-priyansh.netlify.app/ 
                   <FiExternalLink className="hidden group-hover:inline ml-3 duration-200 text-xl"/>
                   </Link>
               <p><span>#React </span>

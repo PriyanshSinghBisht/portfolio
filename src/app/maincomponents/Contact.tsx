@@ -56,7 +56,7 @@ const Contact = () => {
         Contact Me
       </h1>
 
-      <form action="" className="max-w-[800px] mx-auto p-2">
+      <form action="" className="max-w-[800px] mx-auto  p-5">
         <div className="flex flex-col mb-4">
           <motion.label
             htmlFor="name"

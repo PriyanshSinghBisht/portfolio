@@ -17,7 +17,6 @@ export default function Home() {
       dark:bg-black
       text-black
       dark:text-white
-
      ">
        <Toaster />   
        <Navbar/>
