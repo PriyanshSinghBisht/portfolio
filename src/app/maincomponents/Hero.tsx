@@ -1,10 +1,8 @@
 import {motion} from 'framer-motion';
 import React, { useEffect } from 'react'
 import TypingEffect from '../logic/TypingEffect'
-import ImageContainer from '../components/ImageContainer';
 
 const Hero = () => {
-    const stringArray = ['Priyansh Singh Bisht', 'a Webdevelper'];
   return (
     <div 
       id="aboutme"
@@ -21,35 +19,30 @@ const Hero = () => {
        sm:items-center
        '
      >
-          <div className='sm:w-[500px] min-h-[250px] sm:pl-0'>
-              <motion.h1 className='sm:text-[30px] text-4xl font-bold mb-5 '
+          <div className='sm:w-[500px] max-[650px]:text-center 
+          min-h-[210px] sm:pl-0'>
+              <motion.h1 className='sm:text-4xl text-3xl font-medium 
+              sm:mb-5 mb-2 sm:leading-[20px] leading-[40px] 
+              max-[650px]:text-center max-[650px]:mt-5' 
                 initial={{ x: 200}}
                 whileInView={{x:0}}
               >Hellow !</motion.h1>
-              
-              <motion.div 
-                initial={{ x: 200}}
-                whileInView={{x:0}}
-              >
-              <TypingEffect stringArray={stringArray} delay={100} /> 
-              </motion.div>
+                     
+              <TypingEffect /> 
           </div>
           <div className='
             w-[500px]
             max-[500px]:w-[90%]
             xl:mx-20
             lg:mx-10
-            sm:mx-5
             mx-auto
             aspect-square
-            sm:mt-0
-            mt-10
             relative
             '>
-              <img src="/images/group2.png" alt="mypic" 
-                  className="w-[600px] h-auto brightness-125 absolute top-0 -left-16"/>
-              <img src="/images/group.png" alt="mypic" 
-                  className="w-[600px] h-auto brightness-125 absolute top-0 -left-8"/>
+              <img src="/images/group2.png" alt="mypic" id="bg-pink"
+                  className="w-[600px] animate-toggleSize h-auto brightness-125 absolute top-0 -left-16"/>
+              <img src="/images/group.png" alt="mypic" id="bg-blue"
+                  className="w-[600px] h-auto animate-toggleSize brightness-125 absolute top-0 -left-8"/>
               <img src="/images/mypic2.png" alt="mypic" 
                   className="w-[600px] h-auto brightness-125 absolute"/>
           </div>

@@ -68,3 +68,33 @@ html:not(.dark) .bg-gradient-yellow{
     transform: rotate(360deg);
  }
 }
+
+img#bg-blue{
+  animation: 1s move infinite linear alternate;
+}
+
+img#bg-pink{
+  animation: 1s move2 infinite linear alternate;
+}
+
+@keyframes move{
+  0%{
+    top: 0;
+    left: 0px;
+  }
+  100%{
+    top: 0;
+    left: 50px;
+  }
+}
+
+@keyframes move2{
+  0%{
+    top: 0;
+    left: 0px;
+  }
+  100%{
+    top: 0;
+    left: 100px;
+  }
+}

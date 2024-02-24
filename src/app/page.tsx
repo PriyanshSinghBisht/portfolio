@@ -1,6 +1,5 @@
 'use client'
 
-import {motion} from 'framer-motion';
 import Hero from "./maincomponents/Hero"
 import Navbar from "./components/Navbar"
 import Projects from "./maincomponents/Projects";
@@ -14,8 +13,8 @@ export default function Home() {
   return (
      <div className="
       bg-zink-200
-      dark:bg-black
-      text-black
+       dark:bg-black
+       bg-white
       dark:text-white
      ">
        <Toaster />   

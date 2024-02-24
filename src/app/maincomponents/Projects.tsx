@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link'
 import { FiExternalLink} from 'react-icons/fi';
 import ImageModal from '../components/ImageModal';
+
 const Projects = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState('');

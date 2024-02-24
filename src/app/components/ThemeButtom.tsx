@@ -7,7 +7,6 @@ const ThemeButtom = () => {
    
     const handleChangeTheme = () => {
         document.documentElement.classList.toggle('dark');
-        console.log(   document.querySelector("html")?.classList);
     };
     
   return (

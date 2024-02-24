@@ -4,11 +4,11 @@ import Link from "next/link";
 import useNavigate from "../hooks/useNavigate"
 import ThemeButtom from "./ThemeButtom";
 import MobileNavbar from "./MoboleNavbar";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const Navbar = () => {
     const navigator =  useNavigate();
-  
+
   return (
     <>
     <MobileNavbar />
@@ -25,7 +25,8 @@ const Navbar = () => {
     sticky
     top-0
     z-50
-    ">
+    "
+    >
       <div className="mr-10 flex">
       {navigator.map((nav)=>(
         <div 

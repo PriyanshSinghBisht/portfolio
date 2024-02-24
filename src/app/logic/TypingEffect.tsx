@@ -3,17 +3,8 @@
 import { TypeAnimation } from 'react-type-animation';
 
 
-interface TypingEffectProps{
-   stringArray: string[];
-   delay: number;
-}
+const TypingEffect = () => {
 
-const TypingEffect: React.FC<TypingEffectProps> = ({
-   stringArray,
-   delay
-}) => {
-
-  
   return (
     <TypeAnimation
     sequence={[
@@ -26,8 +17,9 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
     ]}
     wrapper="span"
     speed={50}
-    className="text-blue-500 w-[100px]
-    break-words text-5xl font-bold leading-[80px]"
+    className="text-blue-500 
+    break-words sm:text-5xl text-4xl font-[400] sm:leading-[80px] 
+    leading-[50px] max-[660px]:text-center"
     repeat={Infinity}
   />
   )

@@ -10,6 +10,9 @@ const MobileNavbar = () => {
     const navigator =  useNavigate();
     const [open, setOpen] = useState(false);
     const router = useRouter();
+    const ActiveRoute = navigator.map(nav=>{
+      if(nav.isActive) return nav.title;
+    });
     const toggle = ()=>{
         setOpen((o)=> !o);
     }
@@ -20,8 +23,7 @@ const MobileNavbar = () => {
   return (
     <div className="
     bg-transparent 
-    px-7
-    py-7
+    p-5
     sm:hidden
     flex
     text-black
@@ -31,6 +33,11 @@ const MobileNavbar = () => {
     sticky
     top-0
     z-10
+    bg-white
+    dark:bg-black
+    border-b-[1px]
+    border-black
+    dark:border-white
     ">
     
      <div onClick={toggle} className="
@@ -39,11 +46,13 @@ const MobileNavbar = () => {
       mr-auto">
      {
      !open?
-     <VscMenu/>
-     :<VscClose/>
+     <VscMenu strokeWidth="1px" />
+     :<VscClose strokeWidth="1px" />
      }
-     </div>
 
+     <h1 className="fixed w-full text-center top-5 left-0">{ActiveRoute}</h1>
+     </div>
+     
       <div className={`
       ${open? 'w-full': 'w-0'}
       h-full
@@ -65,13 +74,16 @@ const MobileNavbar = () => {
           className="mx-auto">
             <div 
                onClick={()=>handleclick(nav.href)}
-               className="
+               className={`
                 p-4
                 hover:bg-slate-100
                 dark:hover:bg-slate-800
                 rounded-lg
                 cursor-pointer
-                "
+                border-black
+                dark:border-white
+                ${nav.isActive?" border-b-[0px]":" border-b-[1px]"}
+                `}
                >
                 {nav.title}
                 </div>

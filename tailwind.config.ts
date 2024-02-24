@@ -9,7 +9,15 @@ const config: Config = {
   darkMode: ["class"],
   theme: {
     extend: {
-      
+      animation: {
+        toggleSize: '1s toggleSize infinite ease-in-out alternate',
+      },
+      keyframes:{
+        toggleSize:{
+          '0%' : {transform: 'scale(1)'},
+          '100%': {transform: 'scale(1.05)'}
+        }
+      }
     },
   },
   plugins: [],
