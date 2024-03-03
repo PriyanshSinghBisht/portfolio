@@ -13,7 +13,7 @@ import Skills from "./components/Skills";
 import ContactMe from "./components/ContactMe";
 import Footer from './components/Footer';
 
-const page = () => {
+const Page = () => {
   const params = useParams();
   const [currLink, setCurrLink] = useState("/#aboutme"); 
   const [ isNavbarOpen, setNavbarOpen] = useState(false);
@@ -75,4 +75,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
