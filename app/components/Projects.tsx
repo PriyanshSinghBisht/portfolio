@@ -62,7 +62,7 @@ const projects = [
     {
         title: "Netflix Clone",
         description: "This website have clone login page of netflix but other uis are different from original website design by me.",
-        websiteUrl: "https://netflix-clone-priyansh.netlify.app/",
+        websiteUrl: "https://priyanshsinghbisht.github.io/netflix-clone",
         githubUrl: "https://github.com/PriyanshSinghBisht/netflix-clone",
         imgUrl: "/projects/netflix-clone.png",
         tages: ["Reactjs","tmdb api","react-router-dom","responsive"],
