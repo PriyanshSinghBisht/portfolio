@@ -1,7 +1,6 @@
 'use client'
 
 import  { Toaster } from 'react-hot-toast';
-
 import React, {useEffect, useState } from 'react'
 import { useParams } from 'next/navigation';
 
@@ -34,23 +33,27 @@ const Page = () => {
       setChangeNavColor(false);
     }
   }
+
+  useEffect(()=>{
+    console.log("rerendering");
+  });
   
   return (
-    <div className='threeD w-full h-full dark:bg-slate-900 bg-slate-400'>
+    <div className=' mx-auto w-full h-full dark:bg-slate-900 bg-slate-400'>
+      
+      {/* MobileSideNav Start */}
        <div className={`fixed top-0 ${isNavbarOpen?"left-[0%]":"-left-[100%] "}
-                    h-full z-20 flex sm:hidden  duration-1000 w-full`} >
+                    h-full z-20 flex sm:hidden  duration-1000`} >
             <MobileSidebar 
                currLink={currLink}
                closeSideNav={closeSideNav} />
-                <div onClick={closeSideNav}
-                      className='flex-1'
-                    >
-                </div>
            </div>
+        {/* MobileSideNav End */}
         <main 
-           className={`${isNavbarOpen?"slideback":"normal"} duration-1000 bg-slate-300  dark:bg-primary w-full h-full overflow-x-hidden relative flex flex-col gap-y-10
-                        `}
+           className="bg-slate-300 dark:bg-primary w-full h-full overflow-x-hidden relative flex flex-col gap-y-10
+                        "
                          onScroll={handleScroll}>
+                  {/* Gradients Start */}
                   <div className=" dark:block circle1   lg:w-[700px] sm:w-[400px] w-[350px] 
                   aspect-square rounded-full absolute sm:top-[100px] sm:-left-[200px]
                   top-[5%] -left-[20%] "
@@ -58,18 +61,19 @@ const Page = () => {
                   <div className=" dark:block circle2 lg:w-[600px] sm:w-[500px] w-[350px] aspect-square rounded-full absolute
                   sm:-top-[200px] sm:-right-[150px] top-[50%] -right-[20%]"
                 />
-                  <div className={`${isNavbarOpen?"w-full h-full":"w-0 h-0"} fixed dark:bg-black/20 top-0 left-0 z-20`}
+                  {/* Gradients End */}
+            <div className={`${isNavbarOpen?"w-full h-full":"w-0 h-0"} fixed dark:bg-black/20 top-0 left-0 z-10`}
                   onClick={closeSideNav}>
               </div>
           <Toaster />  
           <Navbar openSideNav={openSideNav} changeNavColor={ChangeNavColor}/>
-          <div className='lg:px-20  min-[500px]:px-10 px-5 sm:gap-y-10 gap-y-5 w-full'>
+          <div className='lg:px-20 max-w-[1300px] mx-auto min-[500px]:px-10 px-5 sm:gap-y-10 gap-y-5 w-full'>
             <Hero />
             <Projects />
             <Skills />
             <ContactMe />
           </div>
-          <Footer />
+          <div><Footer /></div>
         </main>
     </div>
   )

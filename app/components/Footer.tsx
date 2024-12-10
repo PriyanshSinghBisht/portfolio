@@ -6,8 +6,12 @@ import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='w-full sm:py-5 py-2 bg-white dark:bg-[#1b2053] flex flex-col sm:items-auto items-center text-black dark:text-white'>
-        <div className="flex gap-x-2 sm:self-end mr-3 ">
+    <div className='bg-white  dark:bg-[#1b2053] h-32 flex sm:flex-row flex-col items-center justify-around text-black dark:text-white'>
+       <div className=" text-[13px] sm:text-left text-center sm:mt-0 mt-3">
+            <p className="font-bold sm:text-md text-sm">Priyansh Singh Bisht</p>
+            <p className="font-medium text-sm">March 2024</p>
+       </div> 
+        <div className="flex gap-x-2 sm:self-end mb-4 ">
             {socialMedia.map((media: any)=>(
                 <div key={media.name}>
                    <a href={media.link} target="_blank"><media.icon className="w-5 h-5 dark:text-white text-black dark:hover:text-blue-400 hover:text-slate-700" /></a>
@@ -15,13 +19,8 @@ const Footer = () => {
             ))}
         </div>
        
-       <p className="text-center my-2">@copyright2024</p>
-       <div className="sm:ml-3 mb-2 text-[13px] sm:text-left text-center w-full">
-            <p>Author: Priyansh Singh Bisht</p>
-            <p>Date: March 2024</p>
-       </div>
-
-    </footer>
+       <p className="text-center font-[serif]">@copyright2024</p>
+    </div>
   )
 }
 

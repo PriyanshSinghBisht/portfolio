@@ -1,4 +1,5 @@
 import { FaGithub,FaGlobe } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Projects = () => {
     
@@ -7,10 +8,14 @@ const Projects = () => {
         <h1 className="text-center sm:text-4xl text-2xl text-black dark:text-white font-bold lg:my-20 my-10">Projects</h1>
         <div className="max-w-[800px] flex flex-col sm:gap-y-10 gap-y-4 [transform-style:preserve-3d] bg-transparent">
             {projects.map((project,index)=>(
-                <div key={index} className="group sm:p-5 p-2 backdrop-blur-lg dark:bg-slate-200/20 bg-slate-200 rounded-lg relative overfow-hidden
-               ">
+                <motion.div key={index} className="group sm:p-5 p-2 backdrop-blur-lg dark:bg-slate-200/20 bg-slate-200 rounded-lg relative overfow-hidden
+               "
+               initial={{ opacity: 0, translateY: 200 }} 
+               whileInView={{ opacity: 1, translateY: 0 }}
+               transition={{ duration: 0.3 }}
+               >
                     <div className="[backface-visibility:hidden] bg-[#0009] group-hover:[transform:rotateY(180deg)] active:[transform:rotateY[0deg]] duration-1000">
-                        <img src={project.imgUrl} alt="project" className="bg-[#0009] "/>
+                        <img src={project.imgUrl} alt="project" className="w-full h-full bg-[#0009] "/>
                     </div>
 
                      <div className=" font-bold absolute sm:bottom-10 top-0 sm:text-2xl text-lg left-0 bg-green-200 w-full h-full px-5 [transform:rotateY(180deg)] [backface-visibility:hidden] group-hover:[transform:rotateY(0deg)] duration-1000 rounded-lg text-center flex flex-col items-center justify-center 
@@ -27,7 +32,7 @@ const Projects = () => {
                             <a href={project.websiteUrl} target="_blank"><FaGlobe className="min-[560px]:w-14 min-[560px]:h-14 w-8 h-8 hover:fill-blue-500"/></a>
                          </div>
                         </div>
-                </div>
+                </motion.div>
             ))}
         </div>
     </div>

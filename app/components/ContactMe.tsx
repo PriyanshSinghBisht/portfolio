@@ -142,9 +142,10 @@ const ContactMe = () => {
              py-2
              ${
                disabled || buttonDisabled
-                 ? "bg-slate-500"
+                 ? "bg-gradient-to-r from-slate-400 to-slate-200" 
                  : `
-             dark:bg-blue-800 dark:hover:bg-blue-900
+             bg-gradient-to-r from-blue-500 to-green-500/50
+
              bg-blue-700  hover:bg-blue-600`
              }
           `}
@@ -161,7 +162,7 @@ const ContactMe = () => {
             ) : (
               <div className="flex items-center justify-center gap-2">
                 Send Me
-                <span className="hidden group-hover:block ">
+                <span className="group-hover:rotate-90 duration-300 active:-rotate-45">
                   <GoPaperAirplane />
                 </span>
               </div>
