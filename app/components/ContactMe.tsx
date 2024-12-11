@@ -25,6 +25,7 @@ const ContactMe = () => {
       setButtonDisabled(true);
     }
   }, [fullMessage.name, fullMessage.email, fullMessage.message]);
+
   const handleSend = async (e: any) => {
     e.preventDefault();
     setDisabled(true);
@@ -42,7 +43,7 @@ const ContactMe = () => {
   return (
     <div id="contactme" className="dark:text-white text-black">
      <h1 className="text-center sm:text-4xl text-2xl text-black dark:text-white font-bold lg:my-10 my-5">Contact Me</h1>
-      <form action="" className="max-w-[800px] mx-auto  p-5">
+      <form onSubmit={handleSend} className="max-w-[800px] mx-auto  p-5">
         <div className="flex flex-col mb-4">
           <motion.label
             htmlFor="name"
@@ -54,8 +55,9 @@ const ContactMe = () => {
             Your Name
           </motion.label>
           <motion.input
-            type="text"
+            type="name"
             name="name"
+            min-length="3"
             placeholder="Enter Your FullName"
             required
             disabled={disabled}
@@ -82,7 +84,7 @@ const ContactMe = () => {
             Your Email
           </motion.label>
           <motion.input
-            type="text"
+            type="email"
             required
             disabled={disabled}
             onChange={(e) =>
@@ -150,7 +152,6 @@ const ContactMe = () => {
              }
           `}
           disabled={disabled || buttonDisabled}
-          onClick={handleSend}
           initial={{ scale: 0.5 }}
           whileInView={{ scale: 1 }}
         >
