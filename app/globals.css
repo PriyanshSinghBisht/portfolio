@@ -2,56 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --primary: #131433;
-    --secondary: #791692;
-    --primary-gradient: #20f9;
-     --secondary-gradient: #E617F865;
+:root {
+  --primary: #131433;
+  --secondary: #791692;
+  --primary-gradient: #20f9;
+  --secondary-gradient: #e617f865;
 }
 
-*{
-    scroll-behavior: smooth;
+.font-pacifico {
+  font-family: var(--font-pacifico), cursive;
+}
+.font-merienda {
+  font-family: var(--font-merienda), cursive;
 }
 
-html, body{
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+.animate-rotate {
+  animation: rotate 5s linear infinite;
 }
 
-.circle1{
-   background: radial-gradient( var(--primary-gradient)0 1%, transparent 60%);
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.circle2{
-    background: radial-gradient(var(--secondary-gradient)0 10%, transparent 90%);
+* {
+  scroll-behavior: smooth;
 }
 
-.PSB{
-        font-family: "Lobster", sans-serif;
-        font-weight: 400;
-        font-style: normal;      
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-img[alt="mypic"], img[alt="blue-back"], img[alt="pink-back"]{
-    position: absolute;
-    top: 50%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-    transition: 1s;
-}
-img[alt="blue-back"]{
-   left: 55%;
-}
-img[alt="pink-back"]{
-   left: 50%;
+.circle1 {
+  background: radial-gradient(var(--primary-gradient) 0 1%, transparent 60%);
 }
 
-.ellips{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+.circle2 {
+  background: radial-gradient(var(--secondary-gradient) 0 10%, transparent 90%);
+}
+
+.PSB {
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+img[alt="mypic"],
+img[alt="blue-back"],
+img[alt="pink-back"] {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+}
+img[alt="blue-back"] {
+  left: 55%;
+}
+img[alt="pink-back"] {
+  left: 50%;
+}
+
+.ellips {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
