@@ -43,15 +43,14 @@ const Page = () => {
 
       {/* MobileSideNav Start */}
       <div className={`fixed top-0 ${isNavbarOpen ? "left-[0%]" : "-left-[100%] "}
-                    h-full z-20 flex sm:hidden  duration-1000`} >
+                    h-full z-40 flex sm:hidden  duration-1000`} >
         <MobileSidebar
           currLink={currLink}
           closeSideNav={closeSideNav} />
       </div>
       {/* MobileSideNav End */}
       <main
-        className="bg-slate-300 dark:bg-primary w-full h-full overflow-x-hidden relative flex flex-col gap-y-10
-                        "
+        className="bg-slate-300 dark:bg-primary w-full h-full overflow-x-hidden relative flex flex-col gap-y-10"
         onScroll={handleScroll}>
         {/* Gradients Start */}
         <div className=" dark:block circle1   lg:w-[700px] sm:w-[400px] w-[350px] 
@@ -62,7 +61,7 @@ const Page = () => {
                   sm:-top-[200px] sm:-right-[150px] top-[50%] -right-[20%] z-0"
         />
         {/* Gradients End */}
-        <div className={`${isNavbarOpen ? "w-full h-full" : "w-0 h-0"} fixed dark:bg-black/20 top-0 left-0 z-10`}
+        <div className={`${isNavbarOpen ? "w-full h-full" : "w-0 h-0"} fixed dark:bg-black/20 top-0 left-0 z-20`}
           onClick={closeSideNav}>
         </div>
         <Toaster />
