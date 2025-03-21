@@ -32,7 +32,7 @@ const Hero = () => {
                     <a className="rounded-sm bg-purple-500 text-white px-4 py-2 mr-2 bg-gradient-to-br 
                     from-purple-500 to-purple-700 w-fit
                     hover:from-purple-700 hover:to-purple-500 hover:shadow [cursor:url('/download.png')]"
-                        href="/Priyansh ( resume ).docx"
+                        href="/resume/resume.pdf"
                     >Download CV</a>
                     <a target="_blank" href="https://github.com/PriyanshSinghBisht" className="block w-fit border border-purple-700 hover:text-purple-500 px-4 py-2 mr-2 ">Visit Github</a>
                 </motion.div>
