@@ -13,7 +13,7 @@ const Navbar = ({ openSideNav, changeNavColor }: {
 }) => {
   return (
     <header className={`dark:text-white text-black flex items-center 
-    justify-between w-full md:py-5 sm:py-3 py-2 sticky top-0 z-10 lg:px-20  min-[500px]:px-10 px-5 transition-background duration-1000 
+    justify-between w-full md:py-5 sm:py-3 py-2 sticky top-0 z-20 lg:px-20  min-[500px]:px-10 px-5 transition-background duration-1000 
     ${changeNavColor ? "bg-white dark:bg-[var(--primary)]" : ""}`} id="aboutme">
       <div onClick={openSideNav} className='sm:hidden flex 
        '><Menu /></div>

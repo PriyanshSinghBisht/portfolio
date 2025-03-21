@@ -5,7 +5,7 @@ const Hero = () => {
     return (
         <div className='w-full flex sm:flex-row flex-col-reverse min-h-[80vh]'>
             <div className="left sm:w-[50%] w-full dark:text-white text-black flex flex-col justify-center items-cener">
-                <div className='max-w-[500px]'>
+                <div className='max-w-[500px] z-10 relative'>
                     <motion.h1
                         initial={{ opacity: 0, y: 100 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -28,11 +28,13 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.6 }}
-                    className="mt-8">
-                    <button className="rounded-sm bg-purple-500 text-white px-4 py-2 mr-2 bg-gradient-to-br from-purple-500 to-purple-700 
+                    className="mt-8 flex flex-col sm:flex-row gap-y-5 sm:gap-y-0">
+                    <a className="rounded-sm bg-purple-500 text-white px-4 py-2 mr-2 bg-gradient-to-br 
+                    from-purple-500 to-purple-700 w-fit
                     hover:from-purple-700 hover:to-purple-500 hover:shadow [cursor:url('/download.png')]"
-                    >Download CV</button>
-                    <a target="_blank" href="https://github.com/PriyanshSinghBisht" className="block w-fit border border-purple-700 hover:text-purple-500 px-4 py-2 mr-2 mt-2">Visit Github</a>
+                        href="/Priyansh ( resume ).docx"
+                    >Download CV</a>
+                    <a target="_blank" href="https://github.com/PriyanshSinghBisht" className="block w-fit border border-purple-700 hover:text-purple-500 px-4 py-2 mr-2 ">Visit Github</a>
                 </motion.div>
             </div>
             <div className="right sm:w-[50%] w-full flex justify-center items-center z-0">
