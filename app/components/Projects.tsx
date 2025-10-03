@@ -58,12 +58,12 @@ const projects = [
         tages: ["Nextjs@13", "pusher api", "prisma", "mongodb", "next auth"],
     },
     {
-        title: "Lyrics",
-        description: "this api get data from multiple shazam apis and give the songs with state managment through reaudx-toolkit",
-        websiteUrl: "https://priyansh-lyriks.netlify.app/",
-        githubUrl: "https://github.com/PriyanshSinghBisht/lyrics",
-        imgUrl: "/projects/lyriks.png",
-        tages: ["Reactjs", "reduxjs", "reduxjs/toolkit", "axios", "shazam-cor api"],
+        title: "Ecommerce",
+        description: "A modern, responsive e-commerce platform built with React, TypeScript, and Vite, showcasing a clean component architecture, optimized performance, and scalable frontend design. Features include dynamic product listings, category-based routing, and a responsive UI styled with Tailwind CSS. Deployed via Vercel, the project demonstrates proficiency in building production-ready SPAs with a strong focus on developer experience, code maintainability, and user-centric design",
+        websiteUrl: "https://ecommerce-s7zm.vercel.app/",
+        githubUrl: "https://github.com/PriyanshSinghBisht/ecommerce",
+        imgUrl: "/projects/ecommerce.png",
+        tages: ["Reactjs", "frontend", "axios", "responsive", "tailwindcss"],
     },
     {
         title: "Netflix Clone",
