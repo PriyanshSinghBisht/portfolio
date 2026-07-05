@@ -11,6 +11,7 @@ import Projects from './components/Projects';
 import Skills from "./components/Skills";
 import ContactMe from "./components/ContactMe";
 import Footer from './components/Footer';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Page = () => {
   const params = useParams();
@@ -34,44 +35,47 @@ const Page = () => {
     }
   }
 
-  useEffect(() => {
-    console.log("rerendering");
-  });
-
   return (
-    <div className=' mx-auto w-full h-full dark:bg-slate-900 bg-slate-400'>
-
-      {/* MobileSideNav Start */}
-      <div className={`fixed top-0 ${isNavbarOpen ? "left-[0%]" : "-left-[100%] "}
-                    h-full z-40 flex sm:hidden  duration-1000`} >
-        <MobileSidebar
-          currLink={currLink}
-          closeSideNav={closeSideNav} />
-      </div>
-      {/* MobileSideNav End */}
+    <div className='min-h-screen w-full dark:bg-primary bg-slate-100'>
+      <AnimatePresence>
+        {isNavbarOpen && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 sm:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeSideNav}
+            />
+            <div className='fixed top-0 left-0 h-full z-40 sm:hidden'>
+              <MobileSidebar
+                currLink={currLink}
+                closeSideNav={closeSideNav}
+              />
+            </div>
+          </>
+        )}
+      </AnimatePresence>
+      
       <main
-        className="bg-slate-300 dark:bg-primary w-full h-full overflow-x-hidden relative flex flex-col gap-y-10"
-        onScroll={handleScroll}>
-        {/* Gradients Start */}
-        <div className=" dark:block circle1   lg:w-[700px] sm:w-[400px] w-[350px] 
-                  aspect-square rounded-full absolute sm:top-[100px] sm:-left-[200px]
-                  top-[5%] -left-[20%] z-0"
-        />
-        <div className=" dark:block circle2 lg:w-[600px] sm:w-[500px] w-[350px] aspect-square rounded-full absolute
-                  sm:-top-[200px] sm:-right-[150px] top-[50%] -right-[20%] z-0"
-        />
-        {/* Gradients End */}
-        <div className={`${isNavbarOpen ? "w-full h-full" : "w-0 h-0"} fixed dark:bg-black/20 top-0 left-0 z-20`}
-          onClick={closeSideNav}>
+        className="bg-slate-100 dark:bg-primary w-full min-h-screen overflow-x-hidden relative"
+        onScroll={handleScroll}
+      >
+        <div className="fluid-grid">
+          <div className="fluid-grid-overlay" />
+          <div className="fluid-grid-nodes" />
         </div>
+        
         <Toaster />
         <Navbar openSideNav={openSideNav} changeNavColor={ChangeNavColor} />
-        <div className='lg:px-20 max-w-[1300px] mx-auto min-[500px]:px-10 px-5 sm:gap-y-10 gap-y-5 w-full z-10'>
+        
+        <div className='lg:px-20 max-w-[1400px] mx-auto min-[500px]:px-10 px-5 pt-24 pb-10'>
           <Hero />
           <Projects />
           <Skills />
           <ContactMe />
         </div>
+        
         <Footer />
       </main>
     </div>

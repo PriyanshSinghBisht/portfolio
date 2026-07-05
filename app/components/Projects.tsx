@@ -6,31 +6,52 @@ const Projects = () => {
 
     return (
         <div className="flex flex-col w-full items-center" id="projects">
-            <Heading caption="Projects" />
-            <div className="max-w-[800px] flex flex-col sm:gap-y-10 gap-y-4 [transform-style:preserve-3d] bg-transparent">
+            <Heading caption="My Projects" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
                 {projects.map((project, index) => (
-                    <motion.div key={index} className="group sm:p-5 p-2 backdrop-blur-lg dark:bg-slate-200/20 bg-slate-200 rounded-lg relative overfow-hidden
-               "
-                        initial={{ opacity: 0, translateY: 200 }}
-                        whileInView={{ opacity: 1, translateY: 0 }}
-                        transition={{ duration: 0.3 }}
+                    <motion.div 
+                        key={index} 
+                        className="group relative rounded-2xl overflow-hidden glass dark:glass-dark hover-lift"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        viewport={{ once: true }}
                     >
-                        <div className="[backface-visibility:hidden] bg-[#0009] group-hover:[transform:rotateY(180deg)] active:[transform:rotateY[0deg]] duration-1000">
-                            <img src={project.imgUrl} alt="project" className="w-full h-full bg-[#0009] " />
+                        <div className="relative aspect-video overflow-hidden">
+                            <img 
+                                src={project.imgUrl} 
+                                alt={project.title} 
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
-                        <div className=" font-bold absolute sm:bottom-10 top-0 sm:text-2xl text-lg left-0 bg-green-200 w-full h-full px-5 [transform:rotateY(180deg)] [backface-visibility:hidden] group-hover:[transform:rotateY(0deg)] duration-1000 rounded-lg text-center flex flex-col items-center justify-center 
-                     ">
-                            <h1 className="text-center mt-4">{project.title}</h1>
-                            <p className="text-[14px] leading-[1.2] font-[500] text-blue-800 max-w-[500px] mb-3 ellips">{project.description}</p>
-                            <div className="flex flex-wrap justify-center gap-x-1">
-                                {project.tages.map((tag, index: number) => (
-                                    <span key={index} className="px-1 py-[1px] bg-slate-800 text-white rounded-lg text-[13px]">{tag}</span>
-                                ))}
+                        <div className="p-6">
+                            <div className="flex items-start justify-between mb-3">
+                                <h3 className="text-xl font-bold dark:text-white text-slate-900 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
+                                    {project.title}
+                                </h3>
+                                <div className="flex gap-3">
+                                    <a href={project.githubUrl} target="_blank" className="text-slate-500 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors">
+                                        <FaGithub className="w-5 h-5" />
+                                    </a>
+                                    <a href={project.websiteUrl} target="_blank" className="text-slate-500 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors">
+                                        <FaGlobe className="w-5 h-5" />
+                                    </a>
+                                </div>
                             </div>
-                            <div className="flex mt-5 sm:mb-5 mb-1  gap-x-4">
-                                <a href={project.githubUrl} target="_blank"><FaGithub className="cursor-alias min-[560px]:w-14 min-[560px]:h-14 w-8 h-8 hover:fill-blue-500" /></a>
-                                <a href={project.websiteUrl} target="_blank"><FaGlobe className="cursor-alias min-[560px]:w-14 min-[560px]:h-14 w-8 h-8 hover:fill-blue-500" /></a>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                                {project.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {project.tages.map((tag, index: number) => (
+                                    <span 
+                                        key={index} 
+                                        className="px-3 py-1 text-xs font-medium rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
                             </div>
                         </div>
                     </motion.div>
@@ -43,44 +64,43 @@ const Projects = () => {
 const projects = [
     {
         title: "Simple Calculator",
-        description: "This is simple calculator with storing history of calculation.",
+        description: "A simple calculator with storing history of calculations. Built with React for a smooth and interactive experience.",
         websiteUrl: "https://calculator555.netlify.app/",
         githubUrl: "https://github.com/PriyanshSinghBisht/Simple-Calculator",
         imgUrl: "/projects/calculator.png",
-        tages: ["Reactjs", "math", "Responsive"],
+        tages: ["React", "JavaScript", "Responsive"],
     },
     {
         title: "Messenger Clone",
-        description: "this website have features as real time communication and active user states using web socket via pusher api",
+        description: "Real-time communication app with active user states using WebSocket via Pusher API. Full authentication system.",
         websiteUrl: "https://messenger-clone-ten-lilac.vercel.app/",
         githubUrl: "https://github.com/PriyanshSinghBisht/messenger-clone",
         imgUrl: "/projects/messenger.png",
-        tages: ["Nextjs@13", "pusher api", "prisma", "mongodb", "next auth"],
+        tages: ["Next.js", "Pusher API", "Prisma", "MongoDB"],
     },
     {
-        title: "Ecommerce",
-        description: "A modern, responsive e-commerce platform built with React, TypeScript, and Vite, showcasing a clean component architecture, optimized performance, and scalable frontend design. Features include dynamic product listings, category-based routing, and a responsive UI styled with Tailwind CSS. Deployed via Vercel, the project demonstrates proficiency in building production-ready SPAs with a strong focus on developer experience, code maintainability, and user-centric design",
+        title: "Modern E-commerce",
+        description: "A responsive e-commerce platform showcasing clean component architecture and optimized performance with TypeScript.",
         websiteUrl: "https://ecommerce-s7zm.vercel.app/",
         githubUrl: "https://github.com/PriyanshSinghBisht/ecommerce",
         imgUrl: "/projects/ecommerce.png",
-        tages: ["Reactjs", "frontend", "axios", "responsive", "tailwindcss"],
+        tages: ["React", "TypeScript", "Tailwind", "Vite"],
     },
     {
         title: "Netflix Clone",
-        description: "This website have clone login page of netflix but other uis are different from original website design by me.",
+        description: "Netflix-style streaming interface with TMDB API integration for movie data and React Router for navigation.",
         websiteUrl: "https://priyanshsinghbisht.github.io/netflix-clone",
         githubUrl: "https://github.com/PriyanshSinghBisht/netflix-clone",
         imgUrl: "/projects/netflix-clone.png",
-        tages: ["Reactjs", "tmdb api", "react-router-dom", "responsive"],
+        tages: ["React", "TMDB API", "Router"],
     },
-
     {
         title: "Discord Clone",
-        description: "this is discord clone with all features of real discord to use this you first need to login then create your server then send link to the friend whom to want to join the server.",
+        description: "Full-featured Discord clone with server creation, real-time messaging via Socket.io, and user authentication.",
         websiteUrl: "https://discord-clone-priyansh.vercel.app/",
         githubUrl: "https://github.com/PriyanshSinghBisht/discord-clone",
         imgUrl: "/projects/discord-clone.png",
-        tages: ["nextjs@13", "socket.io", "shadcn-ui", "mysql", "prisma"],
+        tages: ["Next.js", "Socket.io", "Shadcn UI", "MySQL"],
     }
 ]
 export default Projects

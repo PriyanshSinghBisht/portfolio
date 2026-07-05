@@ -2,31 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  --primary: #131433;
-  --secondary: #791692;
-  --primary-gradient: #20f9;
-  --secondary-gradient: #e617f865;
-}
-
-.font-pacifico {
-  font-family: var(--font-pacifico), cursive;
-}
-.font-merienda {
-  font-family: var(--font-merienda), cursive;
-}
-
-.animate-rotate {
-  animation: rotate 5s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  --primary: #0f172a;
+  --secondary: #6366f1;
+  --accent: #a855f7;
+  --accent-2: #ec4899;
+  --glow: rgba(99, 102, 241, 0.5);
+  --grid-base: rgba(99, 102, 241, 0.06);
+  --grid-node: rgba(99, 102, 241, 0.15);
 }
 
 * {
@@ -39,20 +24,90 @@ body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  font-family: 'Inter', sans-serif;
 }
 
 .circle1 {
-  background: radial-gradient(var(--primary-gradient) 0 1%, transparent 60%);
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
 }
 
 .circle2 {
-  background: radial-gradient(var(--secondary-gradient) 0 10%, transparent 90%);
+  background: radial-gradient(circle at center, rgba(236, 72, 153, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
 }
 
-.PSB {
-  font-family: "Lobster", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(99, 102, 241, 0.3); }
+  50% { border-color: rgba(168, 85, 247, 0.8); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(var(--primary), var(--primary)) padding-box,
+              linear-gradient(135deg, #6366f1, #a855f7, #ec4899) border-box;
+  border: 2px solid transparent;
+}
+
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
 }
 
 img[alt="mypic"],
@@ -64,9 +119,11 @@ img[alt="pink-back"] {
   transform: translate(-50%, -50%);
   transition: 1s;
 }
+
 img[alt="blue-back"] {
   left: 55%;
 }
+
 img[alt="pink-back"] {
   left: 50%;
 }
@@ -78,3 +135,149 @@ img[alt="pink-back"] {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border-radius: 10px;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
+/* ===== OPTIMIZED FLUID GRID BACKGROUND ===== */
+.fluid-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+/* Grid lines – repeating linear gradients, zero DOM cost */
+.fluid-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent calc(80px - 1px),
+      var(--grid-base) calc(80px - 1px),
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent calc(80px - 1px),
+      var(--grid-base) calc(80px - 1px),
+      transparent 80px
+    );
+  transform: translateZ(0);
+}
+
+/* Fluid glow overlay – slowly drifts */
+.fluid-grid-overlay {
+  position: absolute;
+  inset: -100%;
+  background:
+    radial-gradient(ellipse 600px 400px at 25% 30%, rgba(99, 102, 241, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 75% 60%, rgba(236, 72, 153, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 600px at 50% 80%, rgba(168, 85, 247, 0.04) 0%, transparent 60%);
+  will-change: transform;
+  transform: translateZ(0);
+  animation: fluid-drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes fluid-drift {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(4%, -3%) scale(1.03); }
+  66%  { transform: translate(-3%, 4%) scale(0.97); }
+  100% { transform: translate(2%, -1%) scale(1.01); }
+}
+
+/* Grid intersection nodes – rendered as box-shadows on one pseudo-element */
+.fluid-grid-nodes {
+  position: absolute;
+  inset: 0;
+}
+
+.fluid-grid-nodes::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle 2px at 80px 80px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 240px 80px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 400px 80px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 80px 240px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 240px 240px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 400px 240px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 80px 400px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 240px 400px, var(--grid-node) 0%, transparent 100%),
+    radial-gradient(circle 2px at 400px 400px, var(--grid-node) 0%, transparent 100%);
+  background-repeat: repeat;
+  background-size: 480px 480px;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  animation: node-float 8s ease-in-out infinite alternate;
+}
+
+@keyframes node-float {
+  0%   { opacity: 0.5; transform: translate3d(0, 0px, 0); }
+  50%  { opacity: 1;   transform: translate3d(0, -6px, 0); }
+  100% { opacity: 0.5; transform: translate3d(0, 0px, 0); }
+}
+
+/* Dark mode adjustments */
+.dark .fluid-grid::before {
+  opacity: 0.8;
+}
+
+/* Respect user motion preferences – kill all movement */
+@media (prefers-reduced-motion: reduce) {
+  .fluid-grid-overlay,
+  .fluid-grid-nodes::after {
+    animation: none !important;
+  }
+  .fluid-grid-overlay {
+    transform: none !important;
+  }
+  .fluid-grid-nodes::after {
+    opacity: 0.6 !important;
+    transform: none !important;
+  }
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-gradient {
+    animation: none !important;
+  }
+}
+
+/* Kill expensive blurs and extra layers on really low-end */
+@media (max-width: 480px) {
+  .fluid-grid-nodes {
+    display: none;
+  }
+  .fluid-grid-overlay {
+    animation-duration: 40s;
+    opacity: 0.6;
+  }
+}
+
+
+ main{
+  background: #222;
+  background-image: linear-gradient(#000 0.6px, transparent  0% 100%), linear-gradient(to right, #000 0.7px, transparent 0% 100%);
+  background-size: 70px 70px;
+ }

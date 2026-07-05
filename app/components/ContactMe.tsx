@@ -33,160 +33,140 @@ const ContactMe = () => {
     try {
       const res = await axios.post("api/message", fullMessage);
       setFullMessage({ name: "", email: "", message: "" });
-      toast.success("Message sent successfully !");
+      toast.success("Message sent successfully!");
     } catch (error: any) {
       toast.error(error.message);
-      console.log(error);
     } finally {
       setDisabled(false);
     }
   };
+
   return (
     <div id="contactme" className="dark:text-white text-black">
-      <Heading caption="Contact Me" />
+      <Heading caption="Get In Touch" />
 
-      <div className="flex pb-5 items-center">
+      <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto items-stretch">
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="aspect-[1/1.5] sm:flex hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3636432.6857899143!2d78.21886396775244!3d27.118390318048434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39994e9f7b4a09d3%3A0xf6a5476d3617249d!2sUttar%20Pradesh!5e0!3m2!1sen!2sin!4v1741670442741!5m2!1sen!2sin"
-            className="border-none min-w-[200px] h-full"
-            allowFullScreen={false}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade">
-          </iframe>
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="lg:w-1/2 glass dark:glass-dark rounded-2xl p-6 flex flex-col"
+        >
+          <h3 className="text-xl font-bold mb-4 dark:text-white text-slate-900">Let&apos;s Connect</h3>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+          </p>
+          <div className="space-y-4 flex-1">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-indigo-500/5 to-purple-500/5">
+              <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Email</p>
+                <p className="font-medium dark:text-white text-slate-900">priyanshbisht5@gmail.com</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-indigo-500/5 to-purple-500/5">
+              <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Location</p>
+                <p className="font-medium dark:text-white text-slate-900">Uttar Pradesh, India</p>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
-        <form onSubmit={handleSend} className="max-w-[800px] p-5 flex-1">
-          <div className="flex flex-col mb-4">
-            <motion.label
-              htmlFor="name"
-              className="p-2 font-semibold text-lg "
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              Your Name
-            </motion.label>
-            <motion.input
-              type="name"
-              name="name"
-              min-length="3"
-              placeholder="Enter Your FullName"
-              required
-              disabled={disabled}
-              onChange={(e) =>
-                setFullMessage({ ...fullMessage, name: e.target.value })
-              }
-              value={fullMessage.name}
-              className="text-black rounded-sm p-2 
-            max-w-[400px]
-          flex-1 border-2 border-slate-400 
-          outline-none border-none focus:ring-sky-400 focus:ring-2 ring-offset-2 "
-              initial={{ scale: 0.4 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-            <motion.label
-              htmlFor="email"
-              className="p-2 font-semibold text-lg
-           "
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              Your Email
-            </motion.label>
-            <motion.input
-              type="email"
-              required
-              disabled={disabled}
-              onChange={(e) =>
-                setFullMessage({ ...fullMessage, email: e.target.value })
-              }
-              value={fullMessage.email}
-              name="email"
-              placeholder="Enter Your Email"
-              className="text-black rounded-sm p-2 
-          max-w-[400px]
-          flex-1 
-          outline-none border-none focus:ring-sky-400 focus:ring-2 ring-offset-2 "
-              initial={{ scale: 0.4 }}
-              whileInView={{ scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-            />
+        <motion.form 
+          onSubmit={handleSend} 
+          className="lg:w-1/2 glass dark:glass-dark rounded-2xl p-6 flex flex-col gap-4"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2 dark:text-slate-300 text-slate-700">
+                Your Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                minLength={3}
+                placeholder="John Doe"
+                required
+                disabled={disabled}
+                onChange={(e) => setFullMessage({ ...fullMessage, name: e.target.value })}
+                value={fullMessage.name}
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all duration-300 dark:text-white placeholder-slate-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2 dark:text-slate-300 text-slate-700">
+                Your Email
+              </label>
+              <input
+                type="email"
+                required
+                disabled={disabled}
+                onChange={(e) => setFullMessage({ ...fullMessage, email: e.target.value })}
+                value={fullMessage.email}
+                name="email"
+                placeholder="john@example.com"
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all duration-300 dark:text-white placeholder-slate-500"
+              />
+            </div>
           </div>
-          <motion.label
-            htmlFor="Message"
-            className="p-2 font-semibold text-lg"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.3 }}
-          >
-            Message
-          </motion.label>
-          <motion.textarea
-            name="comment..."
-            placeholder="Enter message here..."
-            onChange={(e) =>
-              setFullMessage({ ...fullMessage, message: e.target.value })
-            }
-            value={fullMessage.message}
-            required
-            disabled={disabled}
-            className="
-            w-full
-            p-5 
-            text-black 
-            rounded-sm
-            my-4
-            min-h-[150px]
-            outline-none border-none focus:ring-sky-400 focus:ring-2 ring-offset-2 
-            "
-            initial={{ scale: 0.4 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          ></motion.textarea>
+          
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium mb-2 dark:text-slate-300 text-slate-700">
+              Message
+            </label>
+            <textarea
+              name="message"
+              placeholder="Tell me about your project..."
+              onChange={(e) => setFullMessage({ ...fullMessage, message: e.target.value })}
+              value={fullMessage.message}
+              required
+              disabled={disabled}
+              className="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all duration-300 min-h-[120px] resize-none dark:text-white placeholder-slate-500"
+            ></textarea>
+          </div>
 
           <motion.button
             type="submit"
+            disabled={disabled || buttonDisabled}
             className={`
-            w-full 
-            rounded-lg
-             text-white
-             group
-             py-2
-             ${disabled || buttonDisabled
-                ? "bg-gradient-to-r from-slate-400 to-slate-200"
-                : `
-             bg-gradient-to-r from-blue-500 to-green-500/50
-
-             bg-blue-700  hover:bg-blue-600`
+              w-full py-3 px-6 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-300
+              ${disabled || buttonDisabled
+                ? "bg-slate-300 dark:bg-slate-700 text-slate-500 cursor-not-allowed"
+                : "bg-gradient-primary text-white hover:shadow-glow hover:scale-[1.02] active:scale-[0.98]"
               }
-          `}
-            // disabled={disabled || buttonDisabled}
-            initial={{ scale: 0.5 }}
-            whileInView={{ scale: 1 }}
+            `}
+            whileHover={!buttonDisabled && !disabled ? { scale: 1.02 } : {}}
+            whileTap={!buttonDisabled && !disabled ? { scale: 0.98 } : {}}
           >
-            <div className="flex items-center justify-center gap-2">
-              {disabled ? (
-                <div className="loading text-blue-700 text-xl">
-                  <ImSpinner2 />
-                </div>
-              ) : (
-                <div className="flex items-center justify-center gap-2">
-                  Send Me
-                  <span className="group-hover:rotate-[-25deg] duration-300">
-                    <GoPaperAirplane />
-                  </span>
-                </div>
-              )}
-            </div>
+            {disabled ? (
+              <span className="flex items-center gap-2">
+                <ImSpinner2 className="animate-spin" />
+                Sending...
+              </span>
+            ) : (
+              <span className="flex items-center gap-2">
+                Send Message
+                <GoPaperAirplane className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </span>
+            )}
           </motion.button>
-        </form>
+        </motion.form>
       </div>
     </div>
   );
